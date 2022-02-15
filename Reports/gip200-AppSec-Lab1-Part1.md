@@ -51,18 +51,16 @@ gdb-peda$ p/d 0x7fffffffd960-0x7fffffffd890
 $3 = 208
 
 
-**
+
 
 ## Task 6 - THERE IS NO TASK 6
 
-**
 
 
-**
+
+
 
 ## **Task 7 (5pts): Defeating dash's Countermeasure**
-
-**
 
 In this part, we revert the symbolic link for /bin/sh to dash shell. We then compare compiled binaries where both a32/64 binaries are run with the case without and with setuid enforced.
  
