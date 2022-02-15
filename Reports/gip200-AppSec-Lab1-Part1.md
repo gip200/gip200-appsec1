@@ -1,5 +1,5 @@
 
-## George Papadopoulos - gip200@nyu.edu
+# George Papadopoulos - gip200@nyu.edu
 
 LAB 1, PART 1 
 -------------
@@ -32,7 +32,6 @@ $3 = 108
 
 ## **Task 4 - THERE IS NO TASK 4**
 
-**
 
 ## **Task 5 (12pts): Launching Attack on 64-bit Program (Level 3)**
 
@@ -90,7 +89,6 @@ In this section, we were advised to recompile the shellcode which produces the a
 In comparing the versions, we can see the version of shellcode.c a32 and a64 code, it executes our expected buffer overflow, as expected. In the second instance of running the executable without execstack bypass, we clearly see both 32/64 executables segfault/dump as they are explicitly not allowed to run shell code, which blocks the overflow attempt by strictly limiting the execution.
 
 
-**
 
 ## END OF LAB 1, PART 1
 
