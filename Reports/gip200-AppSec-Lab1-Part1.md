@@ -1,18 +1,21 @@
+
+## George Papadopoulos - gip200@nyu.edu
+
 LAB 1, PART 1 
 -------------
 
-Task 1 (2pts): Getting Familiar with Shellcode
+## **Task 1 (2pts): Getting Familiar with Shellcode**
 
 In this part of the lab, we are asked to review C versions of shellcode and compile (via Makefile) 32 and 64 bit versions. Running make, we get two files, a32.out and a64.out. These two compiled programs can be run from the command line. In both cases, they generate a new shell that can run commands such as ls, who,etc. There is no "visible" difference from 32 to 64 bit binaries when they are run.
 
 
 
-Task 2 (3pts): Understanding the Vulnerable Program
+## **Task 2 (3pts): Understanding the Vulnerable Program**
 
 In this part of the lab, we are asked to review and compile the vulnerable stack.c program. It is implied that the program has a buffer overflow vulnerabity. We are asked to compile the program, (via Makefile)  which also compiles the debugging versions, as well as turning off the StackGuard and the non-executable stack protections, as well as set owner and mod permissions. We see a number of compiled versions of the stack executable, including numerous -dbg versions.
 
 
-Task 3 (10pts): Launching Attack on 32-bit Program (Level 1)
+## **Task 3 (10pts): Launching Attack on 32-bit Program (Level 1)**
 
 In this part of the lab, we use gdb to debug the compiled debug version of the stack binary. Running the debugger and setting breakpoint at bof, we run the stack binary and (setting breakpoint at bof as its vulnerable) and then run, we find ebp and start of buffer values. We found values to be $ebp=0xffffcb28, &buffer=0xffffcaac. Calculating the offset, $ebp-&buffer = 0x6c (108 in decimal). 
 
@@ -27,12 +30,15 @@ $2 = (char (*)[100]) 0xffffcabc
 gdb-peda$ p/d 0xffffcb28-0xffffcabc
 $3 = 108
 
-Task 4 - THERE IS NO TASK 4
+## **Task 4 - THERE IS NO TASK 4**
 
+**
 
-Task 5 (12pts): Launching Attack on 64-bit Program (Level 3)
+## **Task 5 (12pts): Launching Attack on 64-bit Program (Level 3)**
 
-Not fully completed -
+**
+
+Not fully completed - we know from discussion the 64-bit registers need to be found using (R) like rbp instead of ebp.
 
 
 Legend: code, data, rodata, value
@@ -44,10 +50,19 @@ $2 = (char (*)[200]) 0x7fffffffd890
 gdb-peda$ p/d 0x7fffffffd960-0x7fffffffd890
 $3 = 208
 
-Task 6 - THERE IS NO TASK 6
+
+**
+
+## Task 6 - THERE IS NO TASK 6
+
+**
 
 
-Task 7 (5pts): Defeating dash's Countermeasure
+**
+
+## **Task 7 (5pts): Defeating dash's Countermeasure**
+
+**
 
 In this part, we revert the symbolic link for /bin/sh to dash shell. We then compare compiled binaries where both a32/64 binaries are run with the case without and with setuid enforced.
  
@@ -57,18 +72,28 @@ In the latter case, we recompile the code, prepending setuid support and then wh
 
 
 
-Task 8 (5pts): Defeating Address Randomization
+## **Task 8 (5pts): Defeating Address Randomization**
 
 The brute force attack was able to be run using randomization. After 5512 iterations and 19 minutes and 22 seconds elapsed, the 32-bit L1 program was able to achieve a shell that could run commands.
 
 
 
 
-Tasks 9 (10pts): Experimenting with Other Countermeasures
+## **Tasks 9 (10pts): Experimenting with Other Countermeasures**
 
-	Task 9.a: Turn on the StackGuard Protection
+**Task 9.a: Turn on the StackGuard Protection**
+In this section, we were advised to recompile the stack.c(L1, 32-bit) program that was used previously in our buffer overflow without turning off Stackguard as was defined in the Makefile, and see how this affects the executable.
 
-	Task 9.b: Turn on the Non-executable Stack Protection
+In comparing the versions, we can see the version with StackGuard disabled was able to execute the buffer overflow, as expected. In the second instance of running the executable with StackGuard enabled (default), we see the error "stack smashing detected", so the StackGuard clearly detected the overflow attempt and terminates the executable.
+
+**Task 9.b: Turn on the Non-executable Stack Protection**
+In this section, we were advised to recompile the shellcode which produces the a32.out and a64.out. stack.c(L1, 32-bit) program that was used previously in our buffer overflow without "-z execstack", such that the OS is not told the binary will not be allowed to execute shelldcode.
+
+In comparing the versions, we can see the version of shellcode.c a32 and a64 code, it executes our expected buffer overflow, as expected. In the second instance of running the executable without execstack bypass, we clearly see both 32/64 executables segfault/dump as they are explicitly not allowed to run shell code, which blocks the overflow attempt by strictly limiting the execution.
 
 
-END OF LAB 1, PART 1
+**
+
+## END OF LAB 1, PART 1
+
+**
