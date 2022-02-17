@@ -91,6 +91,7 @@ The brute force attack was able to be run using randomization. After 5512 iterat
 ## **Tasks 9 (10pts): Experimenting with Other Countermeasures**
 
 **Task 9.a: Turn on the StackGuard Protection**
+
 In this section, we were advised to recompile the stack.c(L1, 32-bit) program that was used previously in our buffer overflow without turning off Stackguard as was defined in the Makefile, and see how this affects the executable.
 
 In comparing the versions, we can see the version with StackGuard disabled was able to execute the buffer overflow, as expected. In the second instance of running the executable with StackGuard enabled (default), we see the error "stack smashing detected", so the StackGuard clearly detected the overflow attempt and terminates the executable.
@@ -99,6 +100,7 @@ In comparing the versions, we can see the version with StackGuard disabled was a
 
 
 **Task 9.b: Turn on the Non-executable Stack Protection**
+
 In this section, we were advised to recompile the shellcode which produces the a32.out and a64.out. stack.c(L1, 32-bit) program that was used previously in our buffer overflow without "-z execstack", such that the OS is not told the binary will not be allowed to execute shelldcode.
 
 In comparing the versions, we can see the version of shellcode.c a32 and a64 code, it executes our expected buffer overflow, as expected. In the second instance of running the executable without execstack bypass, we clearly see both 32/64 executables segfault/dump as they are explicitly not allowed to run shell code, which blocks the overflow attempt by strictly limiting the execution.
