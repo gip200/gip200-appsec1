@@ -53,7 +53,7 @@ Not fully completed - we know from discussion the 64-bit registers need to be fo
     gdb-peda$ p/d 0xffffcb28-0xffffcabc
     $3 = 108
 
-
+To this point, we are able to determine that the offset is 108 for this 64-bit case.
 
 ## Task 6 - THERE IS NO TASK 6
 
