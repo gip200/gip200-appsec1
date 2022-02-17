@@ -40,14 +40,14 @@ $3 = 108
 Not fully completed - we know from discussion the 64-bit registers need to be found using (R) like rbp instead of ebp.
 
 
-Legend: code, data, rodata, value
-20	    strcpy(buffer, str);       
-gdb-peda$ p $rbp
-$1 = (void *) 0x7fffffffd960
-gdb-peda$ p &buffer
-$2 = (char (*)[200]) 0x7fffffffd890
-gdb-peda$ p/d 0x7fffffffd960-0x7fffffffd890
-$3 = 208
+  Legend: code, data, rodata, value
+  20	    strcpy(buffer, str);       
+  gdb-peda$ p $rbp
+  $1 = (void *) 0x7fffffffd960
+  gdb-peda$ p &buffer
+  $2 = (char (*)[200]) 0x7fffffffd890
+  gdb-peda$ p/d 0x7fffffffd960-0x7fffffffd890
+  $3 = 208
 
 
 
