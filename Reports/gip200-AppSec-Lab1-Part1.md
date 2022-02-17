@@ -44,7 +44,7 @@ $3 = 108
 
 **
 
-Not fully completed - we know from discussion the 64-bit registers need to be found using (R) like rbp instead of ebp.
+Not fully completed - we know from discussion the 64-bit registers need to be found using (R) like rbp instead of ebp. Here we comparitively see the offset of 208 for this 64-bit instance.
 
     nyuappsec@ubuntu:~/AppSec1/Part1/code$ gdb stack-L3-dbg 
 
@@ -105,4 +105,4 @@ In comparing the versions, we can see the version of shellcode.c a32 and a64 cod
 
 ![enter image description here](https://github.com/gip200/gip200-appsec1/blob/main/Reports/Artifacts/gip200-lab1part1task9b.jpg?raw=true)
 
-## LAB 1, PART 1 SUBMISSION
+## END OF LAB 1, PART 1 SUBMISSION
