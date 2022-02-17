@@ -8,12 +8,14 @@ LAB 1, PART 1
 
 In this part of the lab, we are asked to review C versions of shellcode and compile (via Makefile) 32 and 64 bit versions. Running make, we get two files, a32.out and a64.out. These two compiled programs can be run from the command line. In both cases, they generate a new shell that can run commands such as ls, who,etc. There is no "visible" difference from 32 to 64 bit binaries when they are run.
 
+![enter image description here](https://github.com/gip200/gip200-appsec1/blob/main/Reports/Artifacts/gip200-lab1part1task1.jpg?raw=true)
 
 
 ## **Task 2 (3pts): Understanding the Vulnerable Program**
 
 In this part of the lab, we are asked to review and compile the vulnerable stack.c program. It is implied that the program has a buffer overflow vulnerabity. We are asked to compile the program, (via Makefile)  which also compiles the debugging versions, as well as turning off the StackGuard and the non-executable stack protections, as well as set owner and mod permissions. We see a number of compiled versions of the stack executable, including numerous -dbg versions.
 
+![enter image description here](https://github.com/gip200/gip200-appsec1/blob/main/Reports/Artifacts/gip200-lab1part1task2.jpg?raw=true)
 
 ## **Task 3 (10pts): Launching Attack on 32-bit Program (Level 1)**
 
@@ -29,6 +31,9 @@ gdb-peda$ p &buffer
 $2 = (char (*)[100]) 0xffffcabc
 gdb-peda$ p/d 0xffffcb28-0xffffcabc
 $3 = 108
+
+![enter image description here](https://github.com/gip200/gip200-appsec1/blob/main/Reports/Artifacts/gip200-lab1part1task3.jpg?raw=true)
+
 
 ## **Task 4 - THERE IS NO TASK 4**
 
@@ -67,12 +72,14 @@ In the first case, without setuid, we see the shell enforces the uid of the logg
 
 In the latter case, we recompile the code, prepending setuid support and then when the program is run, the elevation is to root(0), as shown, effectively bypassing the dash shell countermeasures. The symbolic links for the shell confirm it is definitely using bash.
 
+![enter image description here](https://github.com/gip200/gip200-appsec1/blob/main/Reports/Artifacts/gip200-lab1part1task7.jpg?raw=true)
 
 
 ## **Task 8 (5pts): Defeating Address Randomization**
 
 The brute force attack was able to be run using randomization. After 5512 iterations and 19 minutes and 22 seconds elapsed, the 32-bit L1 program was able to achieve a shell that could run commands.
 
+![enter image description here](https://github.com/gip200/gip200-appsec1/blob/main/Reports/Artifacts/gip200-lab1part1task8.jpg?raw=true)
 
 
 
@@ -83,12 +90,15 @@ In this section, we were advised to recompile the stack.c(L1, 32-bit) program th
 
 In comparing the versions, we can see the version with StackGuard disabled was able to execute the buffer overflow, as expected. In the second instance of running the executable with StackGuard enabled (default), we see the error "stack smashing detected", so the StackGuard clearly detected the overflow attempt and terminates the executable.
 
+![enter image description here](https://github.com/gip200/gip200-appsec1/blob/main/Reports/Artifacts/gip200-lab1part1task9a.jpg?raw=true)
+
+
 **Task 9.b: Turn on the Non-executable Stack Protection**
 In this section, we were advised to recompile the shellcode which produces the a32.out and a64.out. stack.c(L1, 32-bit) program that was used previously in our buffer overflow without "-z execstack", such that the OS is not told the binary will not be allowed to execute shelldcode.
 
 In comparing the versions, we can see the version of shellcode.c a32 and a64 code, it executes our expected buffer overflow, as expected. In the second instance of running the executable without execstack bypass, we clearly see both 32/64 executables segfault/dump as they are explicitly not allowed to run shell code, which blocks the overflow attempt by strictly limiting the execution.
 
-
+![enter image description here](https://github.com/gip200/gip200-appsec1/blob/main/Reports/Artifacts/gip200-lab1part1task9b.jpg?raw=true)
 
 ## END OF LAB 1, PART 1
 
