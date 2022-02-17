@@ -1,7 +1,8 @@
 
+
 # George Papadopoulos - gip200@nyu.edu
 
-LAB 1, PART 1 
+LAB 1, PART 1 SUBMISSION
 -------------
 
 ## **Task 1 (2pts): Getting Familiar with Shellcode**
@@ -37,6 +38,7 @@ $3 = 108
 
 ## **Task 4 - THERE IS NO TASK 4**
 
+**
 
 ## **Task 5 (12pts): Launching Attack on 64-bit Program (Level 3)**
 
@@ -44,21 +46,26 @@ $3 = 108
 
 Not fully completed - we know from discussion the 64-bit registers need to be found using (R) like rbp instead of ebp.
 
-    Legend: code, data, rodata, value
-    20	    strcpy(buffer, str);       
-    gdb-peda$ p $ebp
-    $1 = (void *) 0xffffcb28
-    gdb-peda$ p &buffer
-    $2 = (char (*)[100]) 0xffffcabc
-    gdb-peda$ p/d 0xffffcb28-0xffffcabc
-    $3 = 108
+    nyuappsec@ubuntu:~/AppSec1/Part1/code$ gdb stack-L3-dbg 
 
-To this point, we are able to determine that the offset is 108 for this 64-bit case.
+    Reading symbols from stack-L3-dbg...
+    gdb-peda$ b bof
+    Breakpoint 1 at 0x1229: file stack.c, line 16.
+    gdb-peda$ r
+    Starting program: /home/nyuappsec/AppSec1/Part1/code/stack-L3-dbg 
+    gdb-peda$ n
+    22	    return 1;
+    gdb-peda$ p $rbp
+    $1 = (void *) 0x7fffffffd960
+    gdb-peda$ p &buffer
+    $2 = (char (*)[200]) 0x7fffffffd890
+    gdb-peda$ p/d 0x7fffffffd960 - 0x7fffffffd890
+    $3 = 208
 
 ## Task 6 - THERE IS NO TASK 6
 
 
-
+**
 
 
 
@@ -98,6 +105,4 @@ In comparing the versions, we can see the version of shellcode.c a32 and a64 cod
 
 ![enter image description here](https://github.com/gip200/gip200-appsec1/blob/main/Reports/Artifacts/gip200-lab1part1task9b.jpg?raw=true)
 
-## END OF LAB 1, PART 1
-
-**
+## LAB 1, PART 1 SUBMISSION
