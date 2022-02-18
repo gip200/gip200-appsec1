@@ -46,7 +46,9 @@ $3 = 108
 
 **
 
-Not fully completed - we know from discussion the 64-bit registers need to be found using (R) like rbp instead of ebp. Here we comparitively see the offset of 208 for this 64-bit instance, with the stack pointer at 0x7fffffffd960.
+Similar to the previous exploit, we can use GDP to find the associated stack pointer and buffer values, however, we know from discussion the 64-bit registers need to be found using (R) like rbp instead of ebp. We run operations on the stack-L3 script. 
+
+Here we comparitively see the offset of 208 for this 64-bit instance, with the stack pointer at 0x7fffffffd960. Utilizing this information, we are able to craft the appropriate exploit-64.py file to produce the badfile for stack-L3. We are able to then run the stack-L3 code and acquire root shell as per figure 5a.
 
     nyuappsec@ubuntu:~/AppSec1/Part1/code$ gdb stack-L3-dbg 
 
