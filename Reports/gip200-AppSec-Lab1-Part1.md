@@ -46,7 +46,7 @@ $3 = 108
 
 **
 
-Not fully completed - we know from discussion the 64-bit registers need to be found using (R) like rbp instead of ebp. Here we comparitively see the offset of 208 for this 64-bit instance.
+Not fully completed - we know from discussion the 64-bit registers need to be found using (R) like rbp instead of ebp. Here we comparitively see the offset of 208 for this 64-bit instance, with the stack pointer at 0x7fffffffd960.
 
     nyuappsec@ubuntu:~/AppSec1/Part1/code$ gdb stack-L3-dbg 
 
