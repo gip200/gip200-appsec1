@@ -35,6 +35,8 @@ $3 = 108
 
 ![enter image description here](https://github.com/gip200/gip200-appsec1/blob/main/Reports/Artifacts/gip200-lab1part1task3.jpg?raw=true)
 
+![enter image description here](https://github.com/gip200/gip200-appsec1/blob/main/Reports/Artifacts/gip200-lab1part1task3a.jpg?raw=true)
+
 
 ## **Task 4 - THERE IS NO TASK 4**
 
