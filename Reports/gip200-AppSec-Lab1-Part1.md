@@ -64,6 +64,12 @@ Not fully completed - we know from discussion the 64-bit registers need to be fo
     gdb-peda$ p/d 0x7fffffffd960 - 0x7fffffffd890
     $3 = 208
 
+
+![enter image description here](https://github.com/gip200/gip200-appsec1/blob/main/Reports/Artifacts/gip200-lab1part1task5.jpg?raw=true)
+
+![enter image description here](https://github.com/gip200/gip200-appsec1/blob/main/Reports/Artifacts/gip200-lab1part1task5a.jpg?raw=true)
+
+
 ## Task 6 - THERE IS NO TASK 6
 
 
