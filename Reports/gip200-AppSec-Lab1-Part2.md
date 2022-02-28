@@ -29,8 +29,6 @@ However, when we use the build_string.py script, we see simply using the supplie
 ## **Task 2 (10pts): Printing Out the Server Program's Memory**
  **_Task 2.A:_**  Stack Data. 
 
-~~If we use the things we learned from Part 1 - the offset of ebp to buffer calculates as 216.~~
-
 The values that are returned by the server program and prompt it out to give more addresses. We see that the address of ‘messages’ argument is printed out in the server output. Since the Return Address just 4 bytes below that, we can calculate the address of the return value as 0x080b4008 – 4 = 0x080b4004.
 
 From trial and error with the build-string.py, applying s = "%.8x"*65 messages allows us to dump the memory+ "%s"
@@ -51,13 +49,14 @@ From trial and error with the build-string.py, applying s = "%.8x"*65 messages a
 
 Note the last byte 64636261 reflects the hex values of our string 'abcd'. To find the address of the of the buffer start, we enter 4 bytes of random  characters - abcd whose ASCII value is known as 64636261 in little endian notation. These characters will be stored at the start of the buffer as they are the first characters and since this buffer is completely the value  given by the input. So, we enter the characters and multiple %.8x as the input to find the values stored in the addresses from the format string address to some random address, hopefully above  the buffer start. By trial and error, we  see that there is a difference of  65 %.8x between the start of the buffer address i.e. 'abcd' and the next address after the format  string address. This can be seen in the following screenshot:
 
-![enter image description here](https://github.com/gip200/gip200-appsec1/blob/main/Reports/Artifacts/gip200-lab1part2task2b2.jpg?raw=true)
+![enter image description here](https://github.com/gip200/gip200-appsec1/blob/main/Reports/Artifacts/gip200-lab1part2task2a.jpg?raw=true)
 
 
 **_Task 2.B:_**  Heap Data 
 
 We need to pass an address in the past. If we want to output the data in the address, only %s can do it, and nothing else can. To that, we alter our build_string file to portray **s = "%.8x"*63 + "%s"**, and starting at our buffer address of 0xffffd7d0, and this allows us to generate the desired secret message, as shown.
  
+![enter image description here](https://github.com/gip200/gip200-appsec1/blob/main/Reports/Artifacts/gip200-lab1part2task2b.jpg?raw=true)
 
 ## **Task 3 (5pts): Modifying the Server Program's Memory**
 
@@ -65,7 +64,7 @@ We need to pass an address in the past. If we want to output the data in the add
 
 Using the original target address of 0x080e5068, we send the following string s = "%.8x"*63 + "%n", which produces a change in the target variable's value (after):  0x00000200, as per picture below.
 
-
+![enter image description here](https://github.com/gip200/gip200-appsec1/blob/main/Reports/Artifacts/gip200-lab1part2task3a.jpg?raw=true)
 
 **Task 3.B:**
 
@@ -75,7 +74,7 @@ HEX 5000 – 00000200 =  **4E00**
 Decimal:		20480 – 512 =  **19968**+8 = 19976
 
 By passing **s = "%.8x"*62 + "%.19976x" + "%n"**, we get the desired result of changing the value to to a specific value 0x5000. As per picture below.
-
+![enter image description here](https://github.com/gip200/gip200-appsec1/blob/main/Reports/Artifacts/gip200-lab1part2task3b.jpg?raw=true)
 
 **Task 3.C:**
 
@@ -106,6 +105,8 @@ AABB – 4E00 = 5CBB								CCDD – 4E00 = 7EDD
 
 Decimal value:											Decimal value:
 43707 – 19968 = 23739 + 8  - 4 			52445 – 19968 = 32477 + 8 - 4
+
+![enter image description here](https://github.com/gip200/gip200-appsec1/blob/main/Reports/Artifacts/gip200-lab1part2task3c.jpg?raw=true)
 
 
 ## **Task 4 (10pts): Inject Malicious Code into the Server Program**
