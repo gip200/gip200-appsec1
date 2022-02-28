@@ -97,7 +97,7 @@ This part is to change the value of target to 0xAABBCCDD. We split 0xAABBCCDD in
     
     # This line shows how to construct a string s with
     #   12 of "%.8x", concatenated with a "%n"
-    s = "%.8x"*62 + "%.23743x" + "%hn" + "%.32481x" + "%hn"
+    s = "%.8x"*62 + "%.023743x" + "%hn" + "%.032481x" + "%hn"
 
 front part													back part
 Hex value:													Hex value:
@@ -120,9 +120,22 @@ Refer to Section 9 in this README ("Informational Guidelines on Reverse Shell") 
 ![enter image description here](https://github.com/gip200/gip200-appsec1/blob/main/Reports/Artifacts/gip200-lab1part2task4.jpg?raw=true)
 
 ## **Task 5 (10pts): Attacking the 64-bit Server Program**
+
+Not Completed
 ![enter image description here](https://github.com/gip200/gip200-appsec1/blob/main/Reports/Artifacts/gip200-lab1part2task5.jpg?raw=true)
 
 ## Task 6 (5pts): Fixing the Problem
+
+The warning refers to a non-constant string as a template string without format parameters. To solve this warning,  we  change printf(msg) to printf("%s", msg) in the server.c code.
+
+    // This line has a format-string vulnerability
+    //printf(msg);
+    printf("%s",msg);
+
+Upon making that change and recompiling, we see no errors on compilation. 
+
+Likewise, if we try to do basic exploits like we did previously, we are unable to, for example to change the target address as we did before.
+
 
 ![enter image description here](https://github.com/gip200/gip200-appsec1/blob/main/Reports/Artifacts/gip200-lab1part2task6.jpg?raw=true)
 
