@@ -117,12 +117,13 @@ Getting a Reverse Shell. We are not interested in running some pre-determined co
 
 Refer to Section 9 in this README ("Informational Guidelines on Reverse Shell") as well Chapter 9 in the recommended textbook for more information about reverse shells.
 
+![enter image description here](https://github.com/gip200/gip200-appsec1/blob/main/Reports/Artifacts/gip200-lab1part2task4.jpg?raw=true)
 
 ## **Task 5 (10pts): Attacking the 64-bit Server Program**
-
+![enter image description here](https://github.com/gip200/gip200-appsec1/blob/main/Reports/Artifacts/gip200-lab1part2task5.jpg?raw=true)
 
 ## Task 6 (5pts): Fixing the Problem
 
-
+![enter image description here](https://github.com/gip200/gip200-appsec1/blob/main/Reports/Artifacts/gip200-lab1part2task6.jpg?raw=true)
 
 ## END OF LAB 1, PART 2 SUBMISSION
